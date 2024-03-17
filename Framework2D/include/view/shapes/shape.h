@@ -1,5 +1,7 @@
 #pragma once
 
+
+//命名空间声明，可以嵌套，也可以在多个地方打开
 namespace USTC_CG
 {
 class Shape
@@ -17,7 +19,7 @@ class Shape
 
    public:
     virtual ~Shape() = default;
-
+    //ImVec2 moupos;
     /**
      * Draws the shape on the screen.
      * This is a pure virtual function that must be implemented by all derived
@@ -39,5 +41,7 @@ class Shape
      * @param x, y Dragging point. e.g. end point of a line.
      */
     virtual void update(float x, float y) = 0;
+    virtual void click_callback(float x, float y){};
+    
 };
 }  // namespace USTC_CG
