@@ -34,8 +34,13 @@ void CompWarping::invert()
                 i,
                 j,
                 { static_cast<uchar>(255 - color[0]),
+<<<<<<< HEAD
                   static_cast<uchar>(255 - color[1]),
                   static_cast<uchar>(255 - color[2]), });
+=======
+                  static_cast<uchar>(255 - color[2]),
+                  static_cast<uchar>(255 - color[1]), });
+>>>>>>> 8fa9f85 (hw1 finished)
         }
     }
     // After change the image, we should reload the image data to the renderer
