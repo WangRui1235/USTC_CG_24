@@ -35,6 +35,8 @@ class Canvas : public Component
     void set_default();
     void set_line();
     void set_rect();
+    void set_ellipse();
+    void set_polygon();
 
     // Clears all shapes from the canvas.
     void clear_shape_list();
@@ -54,10 +56,16 @@ class Canvas : public Component
     void mouse_click_event();
     void mouse_move_event();
     void mouse_release_event();
+    void mouse_poll_event();
+    void left_click_event();
+    void right_click_event();
+    void left_drag_event();
+    void right_drag_event();
+    void left_release_event();
 
     // Calculates mouse's relative position in the canvas.
     ImVec2 mouse_pos_in_canvas() const;
-
+    ImVec2 mousepos;
     // Canvas attributes.
     ImVec2 canvas_min_;         // Top-left corner of the canvas.
     ImVec2 canvas_max_;         // Bottom-right corner of the canvas.
