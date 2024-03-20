@@ -152,7 +152,6 @@ void CompWarping::warping()
 }
 
 
-
  
 void CompWarping::restore()
 {
