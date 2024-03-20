@@ -1,6 +1,7 @@
 #include "comp_warping.h"
 
 #include <cmath>
+#include<cassert>
 
 namespace USTC_CG
 {
@@ -33,8 +34,10 @@ void CompWarping::invert()
                 i,
                 j,
                 { static_cast<uchar>(255 - color[0]),
-                  static_cast<uchar>(255 - color[2]),
-                  static_cast<uchar>(255 - color[1]), });
+                  static_cast<uchar>(255 - color[1]),
+                  static_cast<uchar>(255 - color[2]), });
+
+
         }
     }
     // After change the image, we should reload the image data to the renderer
@@ -149,6 +152,9 @@ void CompWarping::warping()
     *data_ = std::move(warped_image);
     update();
 }
+
+
+ 
 void CompWarping::restore()
 {
     *data_ = *back_up_;
@@ -214,8 +220,8 @@ void CompWarping::init_selections()
     end_points_.clear();
 }
 
-std::pair<int, int>
-CompWarping::fisheye_warping(int x, int y, int width, int height)
+
+std::pair<int, int>CompWarping::fisheye_warping(int x, int y, int width, int height)
 {
     float center_x = width / 2.0f;
     float center_y = height / 2.0f;

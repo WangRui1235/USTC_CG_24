@@ -6,10 +6,7 @@ libs/
 imgui.ini
 third_party/Eigen/
 
-build/
-bin/
-libs/
-.vscode
-imgui.ini
-third_party/Eigen/
+
+
+
 
