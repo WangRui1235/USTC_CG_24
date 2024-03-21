@@ -79,13 +79,26 @@ void ImageWarping::draw_toolbar()
                 //p_image_->enable_selecting(false);
                 //p_image_->idw();
                 p_image_ -> enable_selecting(false);
-                //p_image_ -> idw();
+                p_image_->my_warping = std::make_shared<warping_IDW>(p_image_->start_points_,
+                 p_image_->end_points_,
+                  p_image_->start_,
+                   p_image_->end_, 
+                   p_image_->flag_enable_selecting_points_,
+                    p_image_->draw_status_);
+                p_image_ -> warping();
                 p_image_ -> init_selections();
             }
             if(ImGui::MenuItem("fish_eye") && p_image_)
             {
                 p_image_->enable_selecting(false);
-                //p_image_->warping();
+
+                p_image_->my_warping = std::make_shared<warping_fisheye>(p_image_->start_points_,
+                 p_image_->end_points_,
+                  p_image_->start_,
+                   p_image_->end_, 
+                   p_image_->flag_enable_selecting_points_,
+                    p_image_->draw_status_);
+                p_image_->warping();
                 p_image_->init_selections();
                 //HW2_TODO: 添加什么函数？
                 //p_image_->init_selections();
@@ -93,6 +106,13 @@ void ImageWarping::draw_toolbar()
             if(ImGui::MenuItem("RBF") && p_image_)
             {
                 p_image_->enable_selecting(false);
+                p_image_->my_warping = std::make_shared<warping_RBF>(p_image_->start_points_,
+                 p_image_->end_points_,
+                  p_image_->start_,
+                   p_image_->end_, 
+                   p_image_->flag_enable_selecting_points_,
+                    p_image_->draw_status_);
+                p_image_->warping();
                 //p_image_->rbf();
                 p_image_->init_selections();
             }
