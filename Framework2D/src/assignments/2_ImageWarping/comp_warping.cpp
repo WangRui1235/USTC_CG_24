@@ -37,7 +37,6 @@ void CompWarping::invert()
                   static_cast<uchar>(255 - color[1]),
                   static_cast<uchar>(255 - color[2]), });
 
-
         }
     }
     // After change the image, we should reload the image data to the renderer
@@ -138,7 +137,7 @@ void CompWarping::warping()
         {
             // Apply warping function to (x, y), and we can get (x', y')
             auto [new_x, new_y] =
-                fisheye_warping(x, y, data_->width(), data_->height());
+                my_warping->warping_func(x, y, data_->width(), data_->height());
             // Copy the color from the original image to the result image
             if (new_x >= 0 && new_x < data_->width() && new_y >= 0 &&
                 new_y < data_->height())
@@ -152,6 +151,7 @@ void CompWarping::warping()
     *data_ = std::move(warped_image);
     update();
 }
+
 
 
  
@@ -221,26 +221,27 @@ void CompWarping::init_selections()
 }
 
 
-std::pair<int, int>CompWarping::fisheye_warping(int x, int y, int width, int height)
-{
-    float center_x = width / 2.0f;
-    float center_y = height / 2.0f;
-    float dx = x - center_x;
-    float dy = y - center_y;
-    float distance = std::sqrt(dx * dx + dy * dy);
 
-    // Simple non-linear transformation r -> r' = f(r)
-    float new_distance = std::sqrt(distance) * 10;
+// std::pair<int, int>CompWarping::fisheye_warping(int x, int y, int width, int height)
+// {
+//     float center_x = width / 2.0f;
+//     float center_y = height / 2.0f;
+//     float dx = x - center_x;
+//     float dy = y - center_y;
+//     float distance = std::sqrt(dx * dx + dy * dy);
 
-    if (distance == 0)
-    {
-        return { static_cast<int>(center_x), static_cast<int>(center_y) };
-    }
-    // (x', y')
-    float ratio = new_distance / distance;
-    int new_x = static_cast<int>(center_x + dx * ratio);
-    int new_y = static_cast<int>(center_y + dy * ratio);
+//     // Simple non-linear transformation r -> r' = f(r)
+//     float new_distance = std::sqrt(distance) * 10;
 
-    return { new_x, new_y };
-}
+//     if (distance == 0)
+//     {
+//         return { static_cast<int>(center_x), static_cast<int>(center_y) };
+//     }
+//     // (x', y')
+//     float ratio = new_distance / distance;
+//     int new_x = static_cast<int>(center_x + dx * ratio);
+//     int new_y = static_cast<int>(center_y + dy * ratio);
+
+//     return { new_x, new_y };
+// }
 }  // namespace USTC_CG

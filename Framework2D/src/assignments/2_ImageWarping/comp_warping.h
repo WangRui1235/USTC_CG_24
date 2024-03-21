@@ -89,11 +89,31 @@ class warping
         //void rbf_warping(int x, int y, int width, int height);
         std::pair<int, int> warping_func(int x, int y, int width, int height) override;
     };
+
+    class warping_fisheye : public warping
+    {
+        public:
+        warping_fisheye(
+            std::vector<ImVec2> start_points_,
+            std::vector<ImVec2> end_points_,
+            ImVec2 start_,
+            ImVec2 end_,
+            bool flag_enable_selecting_points_ = false,
+            bool draw_status_ = false)
+            : warping(start_points_, end_points_, start_, end_, flag_enable_selecting_points_, draw_status_)
+        {
+        }
+        //void fisheye_warping(int x, int y, int width, int height);
+        std::pair<int, int> warping_func(int x, int y, int width, int height) override;
+    };
+
 class CompWarping : public ImageEditor
 {
    public:
     explicit CompWarping(const std::string& label, const std::string& filename);
     virtual ~CompWarping() noexcept = default;
+
+    std::shared_ptr<warping> my_warping = nullptr;
 
     void draw() override;
 
@@ -111,7 +131,12 @@ class CompWarping : public ImageEditor
     void select_points();
     void init_selections();
 
-   private:
+    enum class WarpingType
+    {
+        FISHEYE,
+        IDW,
+        RBF
+    };
     // Store the original image data
     std::shared_ptr<Image> back_up_;
     // The selected point couples for image warping
@@ -123,7 +148,9 @@ class CompWarping : public ImageEditor
 
    private:
     // A simple "fish-eye" warping function
-    std::pair<int, int> fisheye_warping(int x, int y, int width, int height);
+
+    //std::pair<int, int> fisheye_warping(int x, int y, int width, int height);
+
     //std::pair<int, int> idw_warping(int x, int y, int width, int height);
 };
 
