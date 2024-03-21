@@ -89,6 +89,7 @@ class warping
         //void rbf_warping(int x, int y, int width, int height);
         std::pair<int, int> warping_func(int x, int y, int width, int height) override;
     };
+
     class warping_fisheye : public warping
     {
         public:
@@ -105,6 +106,7 @@ class warping
         //void fisheye_warping(int x, int y, int width, int height);
         std::pair<int, int> warping_func(int x, int y, int width, int height) override;
     };
+
 class CompWarping : public ImageEditor
 {
    public:
@@ -146,7 +148,9 @@ class CompWarping : public ImageEditor
 
    private:
     // A simple "fish-eye" warping function
+
     //std::pair<int, int> fisheye_warping(int x, int y, int width, int height);
+
     //std::pair<int, int> idw_warping(int x, int y, int width, int height);
 };
 

@@ -36,6 +36,7 @@ void CompWarping::invert()
                 { static_cast<uchar>(255 - color[0]),
                   static_cast<uchar>(255 - color[1]),
                   static_cast<uchar>(255 - color[2]), });
+
         }
     }
     // After change the image, we should reload the image data to the renderer
@@ -218,6 +219,7 @@ void CompWarping::init_selections()
     start_points_.clear();
     end_points_.clear();
 }
+
 
 
 // std::pair<int, int>CompWarping::fisheye_warping(int x, int y, int width, int height)
