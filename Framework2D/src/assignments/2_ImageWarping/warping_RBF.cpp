@@ -28,6 +28,7 @@
 // }  // namespace USTC_CG
 
 
+
 //- 没有点时，恒等变换（ $\boldsymbol{A}=\boldsymbol{I},\boldsymbol{b}=\boldsymbol{0}$ ）
 // - 一个点时，平移变换（ $\boldsymbol{A}=\boldsymbol{I}, \boldsymbol{b}=\boldsymbol{y}_i-\boldsymbol{x}_i$ ）
 // - 两个点时，平移+缩放
@@ -97,6 +98,7 @@ namespace USTC_CG
 
          
        
+
     }
 
 }// namespace USTC_CG
