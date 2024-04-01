@@ -118,6 +118,8 @@ void ImageWarping::draw_toolbar()
                     p_image_->draw_status_);
                 p_image_->warping();
 
+                //p_image_->rbf();
+
                 p_image_->init_selections();
             }
             ImGui::EndMenu();

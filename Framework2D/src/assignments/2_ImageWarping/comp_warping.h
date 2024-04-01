@@ -149,6 +149,7 @@ class CompWarping : public ImageEditor
    private:
     // A simple "fish-eye" warping function
 
+
     //std::pair<int, int> fisheye_warping(int x, int y, int width, int height);
 
     //std::pair<int, int> idw_warping(int x, int y, int width, int height);
